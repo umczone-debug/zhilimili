@@ -1,1 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zhilimili</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;700&family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#E6F4EF;--ink:#0E4D3A;--seg:#CFE8DE;--line:#AFD2C3;--cta:#C93A2B;--ph:#5E7A6E}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:56px 24px 20px;background:var(--bg);color:var(--ink);font-family:'DM Sans','Hind Siliguri',system-ui,sans-serif;line-height:1.5}
+.wrap{width:100%;max-width:400px;flex:1}
+h1{margin:0;text-align:center;font-family:'DM Serif Display',serif;font-weight:400;font-size:56px;letter-spacing:-1px;line-height:1.1}
+.dots{display:flex;justify-content:center;gap:8px;margin:10px 0}
+.dots span{width:6px;height:6px;border-radius:50%;background:var(--ink)}
+.dots span:nth-child(odd){background:var(--cta)}
+.tag{margin:0 0 28px;text-align:center;font-size:16px}
+.seg{display:flex;background:var(--seg);border-radius:12px;padding:4px;margin-bottom:16px}
+.seg button{flex:1;height:40px;border:0;border-radius:9px;background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:500;cursor:pointer}
+.seg button.on{background:#fff;font-weight:700}
+label{display:block;font-size:14px;font-weight:700;margin:14px 0 6px}
+input,select{width:100%;height:50px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:15px}
+input::placeholder{color:var(--ph)}
+input:focus,button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--cta);outline-offset:2px}
+.cta{width:100%;height:52px;margin-top:18px;border:0;border-radius:10px;background:var(--cta);color:#fff;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.cta:disabled{opacity:.6}
+.or{margin:20px 0 10px;text-align:center;font-size:13px}
+.soc{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:48px;margin-bottom:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.soc svg{width:20px;height:20px}
+.link{background:none;border:0;padding:0;color:var(--cta);font:inherit;font-weight:700;cursor:pointer}
+.sw{margin:14px 0 0;text-align:center;font-size:14px}
+.msg{min-height:1.4em;margin:10px 0 0;color:#B3261E;font-size:14px;font-weight:500}
+.hidden{display:none!important}
+.home{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+.hello{font-family:'DM Serif Display',serif;font-size:28px;margin:0 0 4px}
+.who{margin:0 0 10px;word-break:break-all}
+.foot{width:100%;max-width:400px;display:flex;justify-content:space-between;align-items:center;margin-top:24px;font-size:14px}
+.foot select{width:auto;height:44px;padding:0 10px;border-radius:10px}
+.foot .link{color:var(--ink);font-weight:500;min-height:44px}
+dialog{max-width:340px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);padding:22px}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h2{margin:0 0 8px;font-family:'DM Serif Display',serif;font-weight:400;font-size:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Zhilimili</h1>
+  <div class="dots"><span></span><span></span><span></span></div>
+  <p class="tag" data-i18n="tagline"></p>
 
+  <div id="authBox">
+    <div class="seg" role="tablist">
+      <button id="tabEmail" class="on" data-i18n="tabEmail"></button>
+      <button id="tabPhone" data-i18n="tabPhone"></button>
+    </div>
+    <div id="nameRow" class="hidden">
+      <label for="name" data-i18n="name" style="margin-top:0"></label>
+      <input id="name" type="text" autocomplete="name">
+    </div>
+    <label for="idf" id="idLabel" style="margin-top:0"></label>
+    <input id="idf" type="email" autocomplete="username">
+    <label for="pass" data-i18n="password"></label>
+    <input id="pass" type="password" autocomplete="current-password" data-i18n-ph="passHint">
+    <p class="msg" id="msg" role="alert"></p>
+    <button class="cta" id="submitBtn"></button>
+
+    <p class="or" data-i18n="or"></p>
+    <button class="soc" id="googleBtn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.5-.2-2.3H12v4.4h6.5c-.3 1.5-1.1 2.8-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 7.9-2.9l-3.9-3c-1.1.7-2.5 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9H1.4v3.1C3.4 21.5 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.4 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.6.4-2.4V6.5H1.4C.5 8.1 0 10 0 12s.5 3.9 1.4 5.5l4-3.1z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.5 1.4 6.5l4 3.1C6.3 6.9 8.9 4.8 12 4.8z"/></svg>
+      <span data-i18n="google"></span>
+    </button>
+    <button class="soc" id="fbBtn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1877F2" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>
+      <span data-i18n="facebook"></span>
+    </button>
+    <p class="sw"><span id="switchText"></span> <button class="link" id="switchBtn"></button></p>
+  </div>
+
+  <div class="home hidden" id="homeBox">
+    <p class="hello" id="hello"></p>
+    <p class="who" id="who"></p>
+    <p data-i18n="loggedIn"></p>
+    <button class="cta" id="logoutBtn" data-i18n="logout"></button>
+  </div>
+</div>
+
+<div class="foot">
+  <select id="lang" aria-label="Language">
+    <option value="en">English</option>
+    <option value="bn">বাংলা</option>
+    <option value="hi">हिन्दी</option>
+  </select>
+  <button class="link" id="helpBtn" data-i18n="help"></button>
+</div>
+
+<dialog id="helpDlg">
+  <h2 data-i18n="help"></h2>
+  <p data-i18n="helpBody"></p>
+  <p><a class="link" href="mailto:support@example.com">support@example.com</a></p>
+  <button class="cta" id="helpClose" data-i18n="close"></button>
+</dialog>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup,
+  GoogleAuthProvider, FacebookAuthProvider, signOut, onAuthStateChanged, updateProfile }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+// ⬇⬇⬇ PASTE YOUR FIREBASE CONFIG HERE (replace the sample values) ⬇⬇⬇
+const firebaseConfig = {
+  apiKey: "YOUR-apiKey",
+  authDomain: "YOUR-authDomain",
+  projectId: "YOUR-projectId",
+  storageBucket: "YOUR-storageBucket",
+  messagingSenderId: "YOUR-messagingSenderId",
+  appId: "YOUR-appId"
+};
+// ⬆⬆⬆ END OF CONFIG ⬆⬆⬆
+
+const auth = getAuth(initializeApp(firebaseConfig));
+const $ = id => document.getElementById(id);
+
+const T = {
+ en:{tagline:"Where friends meet",tabEmail:"Email",tabPhone:"Mobile number",name:"Your name",email:"Email",phone:"Mobile number",
+  emailHint:"you@example.com",phoneHint:"+8801XXXXXXXXX",password:"Password",passHint:"At least 6 characters",
+  login:"Log in",signup:"Create account",or:"or continue with",google:"Continue with Google",facebook:"Continue with Facebook",
+  newHere:"New here?",haveAcc:"Already have an account?",loggedIn:"You are logged in. Posts, photos and comments will come here soon.",
+  logout:"Log out",welcome:"Welcome",friend:"friend",help:"Help & Support",
+  helpBody:"Having trouble logging in or need help? Write to us and we will reply as soon as we can.",close:"Close",
+  e_fill:"Enter your email or mobile number and password.",e_name:"Enter your name.",e_email:"Enter a valid email address.",
+  e_phone:"Enter a valid mobile number with country code, like +8801XXXXXXXXX.",e_weak:"Password must be at least 6 characters.",
+  e_exists:"An account already exists. Log in instead.",e_wrong:"Email/mobile or password is incorrect.",e_many:"Too many attempts. Try again later.",
+  e_net:"Check your internet connection.",e_cfg:"Firebase config is not set correctly.",e_domain:"This website address is not allowed in Firebase yet.",
+  e_diff:"This email is already used with another login method.",e_off:"This login method is not turned on yet.",e_gen:"Something went wrong. Try again."},
+ bn:{tagline:"বন্ধুদের মিলনমেলা",tabEmail:"ইমেইল",tabPhone:"মোবাইল নাম্বার",name:"আপনার নাম",email:"ইমেইল",phone:"মোবাইল নাম্বার",
+  emailHint:"you@example.com",phoneHint:"+8801XXXXXXXXX",password:"পাসওয়ার্ড",passHint:"কমপক্ষে ৬টি অক্ষর",
+  login:"লগ-ইন করুন",signup:"অ্যাকাউন্ট খুলুন",or:"অথবা এর মাধ্যমে চালিয়ে যান",google:"গুগল দিয়ে চালিয়ে যান",facebook:"ফেসবুক দিয়ে চালিয়ে যান",
+  newHere:"নতুন এসেছেন?",haveAcc:"আগে থেকেই অ্যাকাউন্ট আছে?",loggedIn:"আপনি লগ-ইন করেছেন। পোস্ট, ছবি ও কমেন্টের সুবিধা শীঘ্রই এখানে আসবে।",
+  logout:"লগ-আউট",welcome:"স্বাগতম",friend:"বন্ধু",help:"সাহায্য ও সহায়তা",
+  helpBody:"লগ-ইনে সমস্যা হচ্ছে বা সাহায্য লাগবে? আমাদের লিখুন, আমরা যত দ্রুত সম্ভব উত্তর দেবো।",close:"বন্ধ করুন",
+  e_fill:"ইমেইল বা মোবাইল নাম্বার এবং পাসওয়ার্ড লিখুন।",e_name:"আপনার নাম লিখুন।",e_email:"সঠিক ইমেইল ঠিকানা লিখুন।",
+  e_phone:"দেশের কোডসহ সঠিক মোবাইল নাম্বার লিখুন, যেমন +8801XXXXXXXXX।",e_weak:"পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে।",
+  e_exists:"এই অ্যাকাউন্ট আগেই খোলা আছে। লগ-ইন করুন।",e_wrong:"ইমেইল/মোবাইল বা পাসওয়ার্ড ভুল হয়েছে।",e_many:"অনেকবার চেষ্টা হয়েছে। একটু পরে আবার করুন।",
+  e_net:"ইন্টারনেট সংযোগ চেক করুন।",e_cfg:"Firebase config ঠিকমতো বসানো হয়নি।",e_domain:"এই ওয়েবসাইটের ঠিকানা Firebase-এ এখনো যোগ করা হয়নি।",
+  e_diff:"এই ইমেইল অন্য লগ-ইন পদ্ধতিতে ব্যবহার করা হয়েছে।",e_off:"এই লগ-ইন পদ্ধতি এখনো চালু করা হয়নি।",e_gen:"কিছু একটা ভুল হয়েছে। আবার চেষ্টা করুন।"},
+ hi:{tagline:"जहाँ दोस्त मिलते हैं",tabEmail:"ईमेल",tabPhone:"मोबाइल नंबर",name:"आपका नाम",email:"ईमेल",phone:"मोबाइल नंबर",
+  emailHint:"you@example.com",phoneHint:"+91XXXXXXXXXX",password:"पासवर्ड",passHint:"कम से कम 6 अक्षर",
+  login:"लॉग इन करें",signup:"खाता बनाएँ",or:"या इसके साथ जारी रखें",google:"Google से जारी रखें",facebook:"Facebook से जारी रखें",
+  newHere:"नए हैं?",haveAcc:"पहले से खाता है?",loggedIn:"आप लॉग इन हैं। पोस्ट, फ़ोटो और कमेंट जल्द ही यहाँ आएँगे।",
+  logout:"लॉग आउट",welcome:"स्वागत है",friend:"दोस्त",help:"सहायता और सपोर्ट",
+  helpBody:"लॉग इन में दिक्कत है या मदद चाहिए? हमें लिखें, हम जल्द जवाब देंगे।",close:"बंद करें",
+  e_fill:"ईमेल या मोबाइल नंबर और पासवर्ड लिखें।",e_name:"अपना नाम लिखें।",e_email:"सही ईमेल पता लिखें।",
+  e_phone:"देश कोड के साथ सही मोबाइल नंबर लिखें, जैसे +91XXXXXXXXXX।",e_weak:"पासवर्ड कम से कम 6 अक्षर का होना चाहिए।",
+  e_exists:"खाता पहले से मौजूद है। लॉग इन करें।",e_wrong:"ईमेल/मोबाइल या पासवर्ड गलत है।",e_many:"बहुत बार कोशिश हुई। बाद में फिर करें।",
+  e_net:"इंटरनेट कनेक्शन जाँचें।",e_cfg:"Firebase config सही नहीं है।",e_domain:"यह वेबसाइट पता अभी Firebase में जोड़ा नहीं गया है।",
+  e_diff:"यह ईमेल किसी और लॉग इन तरीके से इस्तेमाल हुआ है।",e_off:"यह लॉग इन तरीका अभी चालू नहीं है।",e_gen:"कुछ गड़बड़ हुई। फिर कोशिश करें।"}
+};
+const errMap = {
+ "auth/invalid-email":"e_email","auth/weak-password":"e_weak","auth/email-already-in-use":"e_exists",
+ "auth/invalid-credential":"e_wrong","auth/user-not-found":"e_wrong","auth/wrong-password":"e_wrong",
+ "auth/too-many-requests":"e_many","auth/network-request-failed":"e_net",
+ "auth/api-key-not-valid":"e_cfg","auth/invalid-api-key":"e_cfg","auth/unauthorized-domain":"e_domain",
+ "auth/account-exists-with-different-credential":"e_diff","auth/operation-not-allowed":"e_off","auth/admin-restricted-operation":"e_off"
+};
+
+let lang = "en", tab = "email", signupMode = false, msgKey = "";
+try { const s = localStorage.getItem("zl_lang"); if (T[s]) lang = s; } catch(e){}
+const t = k => T[lang][k] || T.en[k] || k;
+
+function render(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => el.placeholder = t(el.dataset.i18nPh));
+  $("lang").value = lang;
+  $("tabEmail").classList.toggle("on", tab === "email");
+  $("tabPhone").classList.toggle("on", tab === "phone");
+  $("idLabel").textContent = t(tab === "email" ? "email" : "phone");
+  $("idf").type = tab === "email" ? "email" : "tel";
+  $("idf").inputMode = tab === "email" ? "email" : "tel";
+  $("idf").placeholder = t(tab === "email" ? "emailHint" : "phoneHint");
+  $("nameRow").classList.toggle("hidden", !signupMode);
+  $("submitBtn").textContent = signupMode ? t("signup") : t("login");
+  $("switchText").textContent = signupMode ? t("haveAcc") : t("newHere");
+  $("switchBtn").textContent = signupMode ? t("login") : t("signup");
+  $("pass").autocomplete = signupMode ? "new-password" : "current-password";
+  $("msg").textContent = msgKey ? t(msgKey) : "";
+  if (auth.currentUser) showHome(auth.currentUser);
+}
+function setMsg(k){ msgKey = k; $("msg").textContent = k ? t(k) : ""; }
+
+$("lang").onchange = e => { lang = e.target.value; try{ localStorage.setItem("zl_lang", lang); }catch(x){} render(); };
+$("tabEmail").onclick = () => { tab = "email"; $("idf").value = ""; setMsg(""); render(); };
+$("tabPhone").onclick = () => { tab = "phone"; $("idf").value = ""; setMsg(""); render(); };
+$("switchBtn").onclick = () => { signupMode = !signupMode; setMsg(""); render(); };
+$("helpBtn").onclick = () => $("helpDlg").showModal();
+$("helpClose").onclick = () => $("helpDlg").close();
+
+// Mobile numbers are stored as a hidden email address (no SMS code is sent).
+function toEmail(){
+  const v = $("idf").value.trim();
+  if (tab === "email") return /^\S+@\S+\.\S+$/.test(v) ? v : null;
+  const d = v.replace(/[\s\-()]/g, "");
+  return /^\+?\d{8,15}$/.test(d) ? d.replace("+","") + "@phone.zhilimili.app" : null;
+}
+
+$("submitBtn").onclick = async () => {
+  setMsg("");
+  const pass = $("pass").value, name = $("name").value.trim();
+  if (!$("idf").value.trim() || !pass) return setMsg("e_fill");
+  const email = toEmail();
+  if (!email) return setMsg(tab === "email" ? "e_email" : "e_phone");
+  if (signupMode && !name) return setMsg("e_name");
+  $("submitBtn").disabled = true;
+  try {
+    if (signupMode) {
+      const c = await createUserWithEmailAndPassword(auth, email, pass);
+      await updateProfile(c.user, { displayName: name });
+      showHome(c.user);
+    } else {
+      await signInWithEmailAndPassword(auth, email, pass);
+    }
+  } catch (e) { setMsg(errMap[e.code] || "e_gen"); }
+  $("submitBtn").disabled = false;
+};
+
+async function social(provider){
+  setMsg("");
+  try { await signInWithPopup(auth, provider); }
+  catch (e) { if (e.code !== "auth/popup-closed-by-user" && e.code !== "auth/cancelled-popup-request") setMsg(errMap[e.code] || "e_gen"); }
+}
+$("googleBtn").onclick = () => social(new GoogleAuthProvider());
+$("fbBtn").onclick = () => social(new FacebookAuthProvider());
+$("logoutBtn").onclick = () => signOut(auth);
+
+function showHome(u){
+  const phone = u.email && u.email.endsWith("@phone.zhilimili.app") ? "+" + u.email.split("@")[0] : null;
+  $("hello").textContent = t("welcome") + ", " + (u.displayName || t("friend")) + "!";
+  $("who").textContent = phone || u.email || "";
+}
+
+onAuthStateChanged(auth, u => {
+  $("authBox").classList.toggle("hidden", !!u);
+  $("homeBox").classList.toggle("hidden", !u);
+  if (u) { showHome(u); $("pass").value = ""; }
+});
+render();
+</script>
+</body>
+</html>
